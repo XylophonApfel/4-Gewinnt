@@ -93,7 +93,7 @@ Funktionstabelle:
 | check_horizontal | Prüft ob wagrecht vier in einer Reihe sind | board,player | winner/Aron |
 | check_vertical | Prüft ob senkrecht vier in einer Reihe sind | board,player | winner/Aron |
 | check_diagonal | Prüft ob diagonal vier in einer Reihe sind | board,player | winner/Aron | 
-
+| Readme erstellen | beschreibt im Readme was geprüft werden muss | Non | Manuel| 
  
 	
  
