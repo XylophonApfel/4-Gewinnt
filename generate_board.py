@@ -8,5 +8,3 @@ def generate_board():
             print(f"{i+1} " + "|".join(board[i]))
         print("----------------") 
         return generate_board
-
-generate_board()
