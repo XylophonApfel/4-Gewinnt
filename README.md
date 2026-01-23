@@ -79,3 +79,38 @@ Erwartetes Ergebnis:
 Ja: Wenn es voll ist dann Unentschieden, erneut spielen?
 
 Nein: Spiel wird fortgesetzt.
+
+
+
+===============================================================================
+Funktionstabelle:
+
+| Name | Beschreibung | Argument | Rückgabe |
+|------|-------------|----------|----------|
+| input_player | Namen der Spieler | player | None | -> Manuel
+| generate_board | Initialisieren des Spielfelds | Mehrdimensionale Liste/Dic | None | -> Pavlos
+| move | Fragt Spieler nach Spalte |  | player, column | -> Manuel/Pavlos 
+| check_horizontal | Prüft ob wagrecht vier in einer Reihe sind | board,player | winner | ->Aron
+| check_vertical | Prüft ob senkrecht vier in einer Reihe sind | board,player | winner | -> Aron
+| check_diagonal | Prüft ob diagonal vier in einer Reihe sind | board,player | winner | -> Aron 
+
+ 
+	
+ 
+	
+ 
+	
+  
+
+
+
+
+ 
+	
+ 
+	
+ 
+	
+ 
+ 
+ 
