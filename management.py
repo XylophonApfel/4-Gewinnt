@@ -65,7 +65,7 @@ def spieler_eingabe():
     if not spieler1.isalpha() or not spieler2.isalpha():
         print("Fehler: Namen dürfen nur aus Buchstaben bestehen.")
         return None
-
+    
     return spieler1, spieler2
 
 
