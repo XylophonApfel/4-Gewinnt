@@ -37,6 +37,7 @@ def main():
         board = generate_board(board)
         if winner == "Gewonnen":
             print(f"{spieler2} gewinnt!")
+            break
 
 
 if __name__ == "__main__":
