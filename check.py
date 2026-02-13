@@ -55,3 +55,7 @@ def check_diagonal(board, player):
             if all(board[r - i][c + i] == player for i in range(4)):
                 return "Gewonnen"
     return "Nicht gewonnen"
+
+liste = [["x", "-", "-", "x", "x", "x", "-"],["-", "x", "-", "-", "x", "-", "-"],["-", "-", "x", "x", "x", "-", "-"],["x", "x", "-", "x", "x", "-", "-"],["-", "-", "-", "-", "-", "-", "-"],["-", "-", "-", "-", "-", "-", "-"]]
+winner = check_diagonal(liste, "x")
+print(winner)
