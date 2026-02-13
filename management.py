@@ -59,47 +59,36 @@ def spieler_eingabe():
 
 def move(spieler, board):
     while True:
-        while True:
-            try:
-                move_Zeile = int(input(f"{spieler} bitte gebe die Zeile ein (1-6):\n "))
-                if move_Zeile >= 1 and move_Zeile <= 6:
-                    break
-                else:
-                    print("Zahl muss zwischen 1 und 6 liegen.")
-                    continue
-            except ValueError:
-                print("Bitte eine gültige Zahl eingeben.")
+        try:
+            move_Spalte = int(input(f"{spieler} bitte die Spalte eingeben (1-7): \n"))
+            if move_Spalte < 1 or move_Spalte > 7:
+                print("Zahl muss zwischen 1 und 7 liegen.")
+                continue
+        except ValueError:
+            print("Bitte eine gültige Zahl eingeben.")
+            continue
 
-        while True:
-            try:
-                move_Spalte= int(input(f"{spieler} bitte die Spalte eingeben (1-7): \n"))
-                if move_Spalte >= 1 and move_Spalte <= 7:
-                    break
-                else:
-                    print("Zahl muss zwischen 1 und 7 liegen.")
-                    continue
-            except ValueError:
-                print("Bitte eine gültige Zahl eingeben.")
+        col_index = move_Spalte - 1
+        if board[0][col_index] != " ":
+            print("Spalte ist voll!")
+            continue
 
-        row_index = int(move_Zeile) - 1
-        col_index = int(move_Spalte) - 1
-        if board[row_index][col_index] == " ":
-            break
-        else:
-            print("Feld bereits belegt!")
-            
-    return move_Spalte, move_Zeile
+        return move_Spalte
 
-def move_setzen(move_spalte, move_zeile, board):
-    row_index = int(move_zeile) - 1
+def move_setzen(move_spalte, board):
     col_index = int(move_spalte) - 1
-    board[row_index][col_index] = "x"
+    for row_index in range(len(board) - 1, -1, -1):
+        if board[row_index][col_index] == " ":
+            board[row_index][col_index] = "x"
+            break
 
     return board
 
-def move_setzen2(move_spalte, move_zeile, board):
-    row_index = int(move_zeile) - 1
+def move_setzen2(move_spalte, board):
     col_index = int(move_spalte) - 1
-    board[row_index][col_index] =  "o"
+    for row_index in range(len(board) - 1, -1, -1):
+        if board[row_index][col_index] == " ":
+            board[row_index][col_index] = "o"
+            break
 
     return board

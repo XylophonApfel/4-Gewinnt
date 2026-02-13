@@ -11,8 +11,8 @@ def main():
     os.system("cls")
     board = generate_board(board)
     while True: # Spieler 1
-        move_spalte, move_zeile = move(spieler1, board)
-        board = move_setzen(move_spalte, move_zeile, board)
+        move_spalte = move(spieler1, board)
+        board = move_setzen(move_spalte, board)
         winner = "Nicht gewonnen"
         if check_horizontal(board, "x") == "Gewonnen":
             winner = "Gewonnen"
@@ -25,8 +25,8 @@ def main():
             print(f"{spieler1} gewinnt!")
             break
 
-        move_spalte, move_zeile = move(spieler2, board)        
-        board = move_setzen2(move_spalte, move_zeile, board)
+        move_spalte = move(spieler2, board)
+        board = move_setzen2(move_spalte, board)
         winner = "Nicht gewonnen"
         if check_horizontal(board, "o") == "Gewonnen":
             winner = "Gewonnen"
