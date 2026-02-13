@@ -2,45 +2,32 @@ import os
 os.system("cls")
 
 def check_horizontal(board, player):
-    zaehler = 0
-    winner = "leer"
     for zeile in board:
-        if winner == "Gewonnen": 
-            break
+        zaehler = 0
         for feld in zeile:
-            if feld == "x":
+            if feld == player:
                 zaehler += 1
                 if zaehler == 4:
-                    winner = "Gewonnen"
-                    break
+                    return "Gewonnen"
             else:
                 zaehler = 0
-                winner = "Nicht gewonnen"
-                
-    
-    return winner
+
+    return "Nicht gewonnen"
 
 def check_vertical(board, player):
-    zaehler = 0
-    zaehler2 = 0
-    winner = "leer"
-    for zeile in board:
-        for zeile2 in board:
-
-            if winner == "Gewonnen": 
-                break
-            if zeile2[zaehler2] == "x":
+    rows = len(board)
+    cols = len(board[0])
+    for col in range(cols):
+        zaehler = 0
+        for row in range(rows):
+            if board[row][col] == player:
                 zaehler += 1
                 if zaehler == 4:
-                    winner = "Gewonnen"
-                    break
+                    return "Gewonnen"
             else:
                 zaehler = 0
-                winner = "Nicht gewonnen"
-        if winner != "Gewonnen":
-            zaehler2 += 1
-    
-    return winner
+
+    return "Nicht gewonnen"
 
 def check_diagonal(board, player):
     rows, cols = len(board), len(board[0])
@@ -65,45 +52,43 @@ def spieler_eingabe():
     if not spieler1.isalpha() or not spieler2.isalpha():
         print("Fehler: Namen dürfen nur aus Buchstaben bestehen.")
         return None
-    
+
     return spieler1, spieler2
 
 
 
-def move(spieler):
+def move(spieler, board):
     while True:
         try:
-            move_Zeile = int(input(f"{spieler} bitte gebe die Zeile ein (1-6):\n "))
-            if move_Zeile >= 1 and move_Zeile <= 6:
-                break
-            else:
-                print("Zahl muss zwischen 1 und 6 liegen.")
-                continue
-        except ValueError:
-            print("Bitte eine gültige Zahl eingeben.")
-
-    while True:
-        try:
-            move_Spalte= int(input(f"{spieler} bitte die Spalte eingeben (1-7): \n"))
-            if move_Spalte >= 1 and move_Spalte <= 7:
-                break
-            else:
+            move_Spalte = int(input(f"{spieler} bitte die Spalte eingeben (1-7): \n"))
+            if move_Spalte < 1 or move_Spalte > 7:
                 print("Zahl muss zwischen 1 und 7 liegen.")
                 continue
         except ValueError:
             print("Bitte eine gültige Zahl eingeben.")
-    return move_Spalte, move_Zeile
+            continue
 
-def move_setzen(move_spalte, move_zeile, board):
-    row_index = int(move_zeile) - 1
+        col_index = move_Spalte - 1
+        if board[0][col_index] != " ":
+            print("Spalte ist voll!")
+            continue
+
+        return move_Spalte
+
+def move_setzen(move_spalte, board):
     col_index = int(move_spalte) - 1
-    board[row_index][col_index] = "x"
+    for row_index in range(len(board) - 1, -1, -1):
+        if board[row_index][col_index] == " ":
+            board[row_index][col_index] = "x"
+            break
 
     return board
 
-def move_setzen2(move_spalte, move_zeile, board):
-    row_index = int(move_zeile) - 1
+def move_setzen2(move_spalte, board):
     col_index = int(move_spalte) - 1
-    board[row_index][col_index] =  "o"
+    for row_index in range(len(board) - 1, -1, -1):
+        if board[row_index][col_index] == " ":
+            board[row_index][col_index] = "o"
+            break
 
     return board
