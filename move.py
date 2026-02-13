@@ -1,5 +1,3 @@
-import generate_board
-
 def move():
     while True:
         try:
